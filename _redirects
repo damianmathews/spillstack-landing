@@ -1,0 +1,9 @@
+# Clean URL redirects to section anchors
+/features    /#features    200
+/screenshots /#screenshots 200
+/contact     /#contact     200
+
+# Handle trailing slashes
+/features/    /#features    200
+/screenshots/ /#screenshots 200
+/contact/     /#contact     200
