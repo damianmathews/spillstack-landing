@@ -79,8 +79,9 @@
         }
 
         @keyframes gradient-shift {
-            0%, 100% { opacity: 0.4; transform: translate(-30%, -30%) scale(1); }
-            50% { opacity: 0.6; transform: translate(-70%, -70%) scale(1.2); }
+            0%, 100% { opacity: 0.5; transform: translate(-30%, -30%) scale(1); }
+            33% { opacity: 0.7; transform: translate(-60%, -20%) scale(1.3); }
+            66% { opacity: 0.5; transform: translate(-40%, -80%) scale(1.1); }
         }
 
         /* Animated gradient blobs */
@@ -107,8 +108,8 @@
             left: 20%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255, 59, 127, 0.4) 0%, transparent 70%);
-            animation: gradient-shift 15s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255, 59, 127, 0.5) 0%, transparent 70%);
+            animation: gradient-shift 8s ease-in-out infinite;
         }
 
         .gradient-blob-2 {
@@ -116,8 +117,8 @@
             right: 10%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
-            animation: gradient-shift 20s ease-in-out infinite reverse;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, transparent 70%);
+            animation: gradient-shift 10s ease-in-out infinite reverse;
         }
 
         .gradient-blob-3 {
@@ -125,8 +126,27 @@
             left: 30%;
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
-            animation: gradient-shift 18s ease-in-out infinite 2s;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.35) 0%, transparent 70%);
+            animation: gradient-shift 9s ease-in-out infinite 1s;
+        }
+
+        /* Cursor-following gradient */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 59, 127, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(40px);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .cursor-glow.active {
+            opacity: 1;
         }
 
         .animate-on-scroll {
@@ -490,8 +510,11 @@
 
         /* Contact Section */
         .contact {
-            padding: 8rem 2rem;
+            padding: 4rem 2rem;
             position: relative;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
         }
 
         .contact::before {
@@ -507,40 +530,49 @@
         }
 
         .contact-container {
-            max-width: 480px;
+            max-width: 400px;
             margin: 0 auto;
             position: relative;
+            width: 100%;
+        }
+
+        .contact .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact .section-header p {
+            font-size: 1rem;
         }
 
         .contact-form {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
+            border-radius: 12px;
+            padding: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.375rem;
             color: var(--text-secondary);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.875rem 1rem;
+            padding: 0.625rem 0.875rem;
             background: var(--bg-primary);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-family: inherit;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
@@ -557,16 +589,16 @@
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 80px;
             resize: vertical;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.25rem;
             background: linear-gradient(135deg, var(--accent) 0%, #e6356f 100%);
             color: white;
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 600;
             border: none;
             border-radius: 50px;
@@ -725,6 +757,9 @@
         <div class="gradient-blob gradient-blob-3"></div>
     </div>
 
+    <!-- Cursor-following glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -829,25 +864,6 @@
                     <h3>AI Titles & Summaries</h3>
                     <p>Get instant AI-generated titles and summaries that capture the essence of your ideas, making them easy to scan later.</p>
                 </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                    </div>
-                    <h3>Search & Filter</h3>
-                    <p>Instantly find any idea with powerful search. Filter by category, date, or keywords to surface exactly what you need.</p>
-                </div>
-                <div class="feature-card animate-on-scroll">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                        </svg>
-                    </div>
-                    <h3>Beautiful Dark Interface</h3>
-                    <p>A stunning dark theme that's easy on the eyes. Perfect for late-night brainstorming sessions when ideas flow freely.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -915,6 +931,20 @@
                     nav.classList.remove('scrolled');
                 }
             });
+
+            // Cursor-following glow (desktop only)
+            const cursorGlow = document.getElementById('cursorGlow');
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorGlow.style.left = e.clientX + 'px';
+                    cursorGlow.style.top = e.clientY + 'px';
+                    cursorGlow.classList.add('active');
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    cursorGlow.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
