@@ -236,15 +236,19 @@
 
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5.5vw, 3.75rem);
-            font-weight: 700;
-            line-height: 1.2;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.3;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .hero h1 .accent {
             color: var(--accent);
+        }
+
+        .hero h1 .nowrap {
+            white-space: nowrap;
         }
 
         .hero p {
@@ -340,10 +344,10 @@
         }
 
         .section-header h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 700;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .section-header h2 .accent {
@@ -681,7 +685,7 @@
 
         <div class="hero-content">
             <h1 class="animate-on-scroll">
-                Capture <span class="accent">Ideas</span> Before They <span class="accent">Disappear</span>
+                Capture ideas <span class="nowrap">before they <span class="accent">disappear</span></span>
             </h1>
             <p class="animate-on-scroll">Voice-to-text AI transcription that turns your fleeting thoughts into organized, searchable ideas. Just tap and talk.</p>
             <a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="hero-cta animate-on-scroll">
