@@ -115,7 +115,7 @@
         }
 
         .logo img {
-            height: 48px;
+            height: 56px;
             width: auto;
             filter: invert(1);
         }
@@ -234,63 +234,17 @@
             z-index: 2;
         }
 
-        /* Social proof */
-        .social-proof {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-
-        .avatar-stack {
-            display: flex;
-        }
-
-        .avatar-stack img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid var(--bg-primary);
-            margin-left: -8px;
-            object-fit: cover;
-        }
-
-        .avatar-stack img:first-child {
-            margin-left: 0;
-        }
-
-        .social-proof-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .stars {
-            color: #fbbf24;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-
-        .review-count {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-size: clamp(2.5rem, 5.5vw, 3.75rem);
             font-weight: 700;
-            line-height: 1.15;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
 
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #fb7185 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-style: italic;
+        .hero h1 .accent {
+            color: var(--accent);
         }
 
         .hero p {
@@ -392,11 +346,8 @@
             letter-spacing: -0.02em;
         }
 
-        .section-header h2 .gradient-text {
-            background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .section-header h2 .accent {
+            color: var(--accent);
         }
 
         .section-header p {
@@ -698,15 +649,6 @@
             .app-screenshots {
                 grid-template-columns: 1fr 1fr;
             }
-
-            .social-proof {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .social-proof-text {
-                align-items: center;
-            }
         }
     </style>
 </head>
@@ -738,23 +680,8 @@
         <div class="particle" style="top: 55%; left: 75%; animation-delay: 2.5s;"></div>
 
         <div class="hero-content">
-            <!-- Social proof -->
-            <div class="social-proof animate-on-scroll">
-                <div class="avatar-stack">
-                    <img src="https://i.pravatar.cc/100?img=1" alt="User">
-                    <img src="https://i.pravatar.cc/100?img=2" alt="User">
-                    <img src="https://i.pravatar.cc/100?img=3" alt="User">
-                    <img src="https://i.pravatar.cc/100?img=4" alt="User">
-                </div>
-                <div class="social-proof-text">
-                    <span class="stars">★★★★★</span>
-                    <span class="review-count">Join thousands of users</span>
-                </div>
-            </div>
-
             <h1 class="animate-on-scroll">
-                Capture <span class="gradient-text">Ideas</span><br>
-                Before They <span class="gradient-text">Disappear</span>
+                Capture <span class="accent">Ideas</span> Before They <span class="accent">Disappear</span>
             </h1>
             <p class="animate-on-scroll">Voice-to-text AI transcription that turns your fleeting thoughts into organized, searchable ideas. Just tap and talk.</p>
             <a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="hero-cta animate-on-scroll">
@@ -790,7 +717,7 @@
     <section class="features" id="features">
         <div class="section-container">
             <div class="section-header animate-on-scroll">
-                <h2>Everything you need to <span class="gradient-text">capture brilliance</span></h2>
+                <h2>Everything you need to <span class="accent">capture brilliance</span></h2>
                 <p>Powerful features designed for creative minds who think faster than they can type.</p>
             </div>
             <div class="features-grid">
@@ -857,7 +784,7 @@
     <section class="contact" id="contact">
         <div class="contact-container">
             <div class="section-header animate-on-scroll">
-                <h2>Get in <span class="gradient-text">touch</span></h2>
+                <h2>Get in <span class="accent">touch</span></h2>
                 <p>Have questions or feedback? We'd love to hear from you.</p>
             </div>
             <form class="contact-form animate-on-scroll" name="contact" method="POST" data-netlify="true" action="/success.html">
