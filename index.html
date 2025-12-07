@@ -72,6 +72,63 @@
             50% { opacity: 1; }
         }
 
+        @keyframes gradient-drift {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { opacity: 0.4; transform: translate(-30%, -30%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-70%, -70%) scale(1.2); }
+        }
+
+        /* Animated gradient blobs */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .gradient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .gradient-blob-1 {
+            top: 20%;
+            left: 20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 59, 127, 0.4) 0%, transparent 70%);
+            animation: gradient-shift 15s ease-in-out infinite;
+        }
+
+        .gradient-blob-2 {
+            top: 60%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
+            animation: gradient-shift 20s ease-in-out infinite reverse;
+        }
+
+        .gradient-blob-3 {
+            bottom: 10%;
+            left: 30%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+            animation: gradient-shift 18s ease-in-out infinite 2s;
+        }
+
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(24px);
@@ -661,6 +718,13 @@
     </style>
 </head>
 <body>
+    <!-- Animated gradient background -->
+    <div class="gradient-bg">
+        <div class="gradient-blob gradient-blob-1"></div>
+        <div class="gradient-blob gradient-blob-2"></div>
+        <div class="gradient-blob gradient-blob-3"></div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
