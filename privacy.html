@@ -64,10 +64,15 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            display: flex;
+            align-items: center;
             text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            filter: invert(1);
         }
 
         /* Content */
@@ -155,9 +160,14 @@
         }
 
         .footer-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 24px;
+            width: auto;
+            filter: invert(1);
         }
 
         .footer-links {
@@ -215,7 +225,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">SpillStack</a>
+            <a href="/" class="logo"><img src="/logo.svg" alt="SpillStack"></a>
         </div>
     </nav>
 
@@ -349,7 +359,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <div class="footer-logo">SpillStack</div>
+            <div class="footer-logo"><img src="/logo.svg" alt="SpillStack"></div>
             <div class="footer-links">
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/terms">Terms of Service</a>
