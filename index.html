@@ -763,7 +763,7 @@
         @media (max-width: 768px) {
             .steps-grid {
                 grid-auto-flow: column;
-                grid-auto-columns: 85%;
+                grid-auto-columns: minmax(280px, 90%);
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
                 gap: 1rem;
@@ -773,6 +773,9 @@
 
             .step {
                 scroll-snap-align: start;
+                min-width: 280px;
+                max-width: 340px;
+                margin: 0 auto;
             }
         }
 
@@ -908,7 +911,7 @@
             }
 
             .logo img {
-                height: 52px;
+                height: 65px;
             }
 
             .nav-links {
@@ -994,7 +997,7 @@
             }
 
             .logo img {
-                height: 56px;
+                height: 70px;
             }
 
             .footer-logo img {
