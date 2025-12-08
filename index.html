@@ -22,6 +22,28 @@
     <meta name="twitter:description" content="Voice-to-text AI transcription that turns your fleeting thoughts into organized, searchable ideas.">
     <meta name="twitter:image" content="https://spillstack.com/og-image.png">
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "SpillStack",
+        "operatingSystem": "iOS",
+        "applicationCategory": "ProductivityApplication",
+        "description": "Voice-to-text AI transcription app that captures and organizes your ideas automatically.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "1"
+        }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
@@ -388,8 +410,8 @@
 
         .app-screenshots {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
 
         .app-screenshot {
@@ -397,6 +419,12 @@
             overflow: hidden;
             background: var(--bg-primary);
             aspect-ratio: 9/19.5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-screenshot:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .app-screenshot img {
@@ -611,6 +639,121 @@
             box-shadow: 0 8px 24px rgba(255, 59, 127, 0.4);
         }
 
+        /* How It Works Section */
+        .how-it-works {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-purple) 100%);
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+
+        .step h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        /* Secondary CTA Section */
+        .secondary-cta {
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .secondary-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse at center, rgba(255, 59, 127, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .secondary-cta h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .secondary-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* App Store Badge */
+        .app-store-badge {
+            display: inline-block;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .app-store-badge:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .app-store-badge img {
+            height: 54px;
+            width: auto;
+        }
+
+        /* CTA Button Animation */
+        @keyframes cta-pulse {
+            0%, 100% { box-shadow: 0 4px 24px rgba(255, 59, 127, 0.3); }
+            50% { box-shadow: 0 4px 32px rgba(255, 59, 127, 0.5); }
+        }
+
+        .hero-cta {
+            animation: cta-pulse 2s ease-in-out infinite;
+        }
+
+        .hero-cta:hover {
+            animation: none;
+        }
+
         /* Footer */
         footer {
             padding: 3rem 2rem;
@@ -633,7 +776,7 @@
         }
 
         .footer-logo img {
-            height: 36px;
+            height: 56px;
             width: auto;
             filter: invert(1);
             opacity: 0.7;
@@ -812,9 +955,33 @@
                     <div class="app-screenshot">
                         <img src="screenshots/3.png" alt="SpillStack AI Preview" loading="lazy">
                     </div>
-                    <div class="app-screenshot">
-                        <img src="screenshots/4.png" alt="SpillStack Tasks" loading="lazy">
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <div class="section-header animate-on-scroll">
+                <h2>How it <span class="accent">works</span></h2>
+                <p>Three simple steps to never lose an idea again.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Tap & Talk</h3>
+                    <p>Open the app and tap the record button. Speak your idea naturally, no typing required.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>AI Transcribes</h3>
+                    <p>Our AI instantly converts your voice to text with high accuracy, even with background noise.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Auto-Organize</h3>
+                    <p>Ideas are automatically titled, summarized, and categorized so you can find them later.</p>
                 </div>
             </div>
         </div>
@@ -865,6 +1032,17 @@
                     <p>Get instant AI-generated titles and summaries that capture the essence of your ideas, making them easy to scan later.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Secondary CTA Section -->
+    <section class="secondary-cta">
+        <div class="section-container animate-on-scroll">
+            <h2>Ready to capture your best ideas?</h2>
+            <p>Download SpillStack free and never lose a brilliant thought again.</p>
+            <a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="app-store-badge">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
         </div>
     </section>
 
