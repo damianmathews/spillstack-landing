@@ -1,9 +1,9 @@
-# Clean URL redirects to section anchors
-/features    /#features    200
-/screenshots /#screenshots 200
-/contact     /       200
-
-# Handle trailing slashes
-/features/    /#features    200
-/screenshots/ /#screenshots 200
-/contact/     /       200
+# Clean URL redirects back to root (hash-free)
+/features       /       200
+/features/      /       200
+/screenshots    /       200
+/screenshots/   /       200
+/contact        /       200
+/contact/       /       200
+/how-it-works   /       200
+/how-it-works/  /       200

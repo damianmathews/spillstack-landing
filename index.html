@@ -1039,9 +1039,9 @@
         <div class="nav-container">
             <a href="/" class="logo"><img src="/logo.png" alt="SpillStack"></a>
             <ul class="nav-links">
-                <li><a href="#how-it-works">How it Works</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="/contact" class="contact-link">Contact</a></li>
+                <li><a href="/how-it-works" class="scroll-link" data-target="how-it-works">How it Works</a></li>
+                <li><a href="/features" class="scroll-link" data-target="features">Features</a></li>
+                <li><a href="/contact" class="scroll-link" data-target="contact">Contact</a></li>
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -1054,9 +1054,9 @@
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="#how-it-works">How it Works</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="/contact" class="contact-link">Contact</a></li>
+                <li><a href="/how-it-works" class="scroll-link" data-target="how-it-works">How it Works</a></li>
+                <li><a href="/features" class="scroll-link" data-target="features">Features</a></li>
+                <li><a href="/contact" class="scroll-link" data-target="contact">Contact</a></li>
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
         </div>
@@ -1275,12 +1275,19 @@
                 });
             }
 
-            // Contact link handling for /contact path while keeping smooth scroll
-            const contactSection = document.getElementById('contact');
-            const contactLinks = document.querySelectorAll('a.contact-link[href="/contact"]');
-            const scrollToContact = () => {
-                if (!contactSection) return;
-                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Smooth scroll for clean URLs (/contact, /features, /how-it-works)
+            const scrollLinks = document.querySelectorAll('a.scroll-link[data-target]');
+            const targetFromPath = {
+                '/contact': 'contact',
+                '/features': 'features',
+                '/how-it-works': 'how-it-works'
+            };
+
+            const scrollToTarget = (id) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             };
 
             const closeMobileMenu = () => {
@@ -1292,17 +1299,20 @@
                 }
             };
 
-            contactLinks.forEach(link => {
+            scrollLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
+                    const targetId = link.getAttribute('data-target');
+                    if (!targetId) return;
                     e.preventDefault();
-                    history.pushState(null, '', '/contact');
+                    history.pushState(null, '', '/' + (targetId === 'contact' ? 'contact' : targetId));
                     closeMobileMenu();
-                    scrollToContact();
+                    scrollToTarget(targetId);
                 });
             });
 
-            if (location.pathname === '/contact') {
-                setTimeout(scrollToContact, 50);
+            const initialTarget = targetFromPath[location.pathname];
+            if (initialTarget) {
+                setTimeout(() => scrollToTarget(initialTarget), 50);
             }
 
             // Cursor-following glow (desktop only)
