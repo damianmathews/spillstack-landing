@@ -543,6 +543,7 @@
             min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
+            border-top: none;
         }
 
         .contact::before {
@@ -696,6 +697,7 @@
             padding: 5rem 2rem;
             text-align: center;
             position: relative;
+            border: none;
         }
 
         .secondary-cta::before {
@@ -704,10 +706,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 300px;
-            background: radial-gradient(ellipse at center, rgba(255, 59, 127, 0.15), transparent 70%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse at center, rgba(255, 59, 127, 0.1), transparent 60%);
             pointer-events: none;
+            filter: blur(40px);
         }
 
         .secondary-cta h2 {
