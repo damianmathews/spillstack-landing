@@ -83,6 +83,10 @@
             letter-spacing: -0.01em;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
@@ -252,11 +256,79 @@
             font-weight: 600;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 8px 24px rgba(77, 162, 255, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .nav-cta:hover {
             transform: translateY(-1px);
             box-shadow: 0 12px 32px rgba(77, 162, 255, 0.35);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(77, 162, 255, 0.2);
+            color: var(--text-primary);
+            padding: 0.6rem;
+            border-radius: 12px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+        }
+
+        .menu-toggle .bar {
+            width: 18px;
+            height: 2px;
+            background: currentColor;
+            display: block;
+            border-radius: 99px;
+        }
+
+        .menu-toggle .bar + .bar {
+            margin-top: 4px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(5, 9, 21, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem 1.25rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .mobile-menu.open {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.9rem 1rem;
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            border-color: rgba(77, 162, 255, 0.25);
+            background: rgba(77, 162, 255, 0.06);
         }
 
         /* Hero Section */
@@ -695,8 +767,17 @@
 
         @media (max-width: 768px) {
             .steps-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
+                grid-auto-flow: column;
+                grid-auto-columns: 85%;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 1rem;
+                padding-bottom: 0.5rem;
+                margin-inline: -0.5rem;
+            }
+
+            .step {
+                scroll-snap-align: start;
             }
         }
 
@@ -839,6 +920,14 @@
                 display: none;
             }
 
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .mobile-menu {
+                top: calc(100% + 0.5rem);
+            }
+
             .hero {
                 padding: 8rem 1.5rem 3rem;
             }
@@ -908,6 +997,23 @@
             .hero h1 {
                 font-size: 1.75rem;
             }
+
+            .hero-glow {
+                width: 320px;
+                height: 220px;
+                opacity: 0.7;
+            }
+
+            .gradient-blob-1,
+            .gradient-blob-2,
+            .gradient-blob-3 {
+                animation: none;
+                opacity: 0.12;
+            }
+
+            .hero::before {
+                opacity: 0.12;
+            }
         }
     </style>
 </head>
@@ -927,6 +1033,18 @@
         <div class="nav-container">
             <a href="/" class="logo"><img src="/logo.png" alt="SpillStack"></a>
             <ul class="nav-links">
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
                 <li><a href="#how-it-works">How it Works</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1129,6 +1247,22 @@
                     nav.classList.remove('scrolled');
                 }
             });
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = mobileMenu.classList.toggle('open');
+                    document.body.classList.toggle('menu-open', isOpen);
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('open');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
+            }
 
             // Cursor-following glow (desktop only)
             const cursorGlow = document.getElementById('cursorGlow');
