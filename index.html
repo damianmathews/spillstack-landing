@@ -1041,7 +1041,7 @@
             <ul class="nav-links">
                 <li><a href="#how-it-works">How it Works</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/contact" class="contact-link">Contact</a></li>
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -1056,7 +1056,7 @@
             <ul>
                 <li><a href="#how-it-works">How it Works</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/contact" class="contact-link">Contact</a></li>
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
         </div>
@@ -1273,6 +1273,36 @@
                         menuToggle.setAttribute('aria-expanded', 'false');
                     });
                 });
+            }
+
+            // Contact link handling for /contact path while keeping smooth scroll
+            const contactSection = document.getElementById('contact');
+            const contactLinks = document.querySelectorAll('a.contact-link[href="/contact"]');
+            const scrollToContact = () => {
+                if (!contactSection) return;
+                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            const closeMobileMenu = () => {
+                if (!mobileMenu) return;
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('menu-open');
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            };
+
+            contactLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    history.pushState(null, '', '/contact');
+                    closeMobileMenu();
+                    scrollToContact();
+                });
+            });
+
+            if (location.pathname === '/contact') {
+                setTimeout(scrollToContact, 50);
             }
 
             // Cursor-following glow (desktop only)
