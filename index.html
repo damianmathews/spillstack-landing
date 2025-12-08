@@ -272,24 +272,18 @@
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(77, 162, 255, 0.2);
             color: var(--text-primary);
-            padding: 0.6rem;
+            width: 44px;
+            height: 44px;
+            padding: 0;
             border-radius: 12px;
             cursor: pointer;
             align-items: center;
             justify-content: center;
-            gap: 0.35rem;
         }
 
-        .menu-toggle .bar {
-            width: 18px;
-            height: 2px;
-            background: currentColor;
-            display: block;
-            border-radius: 99px;
-        }
-
-        .menu-toggle .bar + .bar {
-            margin-top: 4px;
+        .menu-toggle svg {
+            width: 22px;
+            height: 22px;
         }
 
         .mobile-menu {
@@ -1048,9 +1042,11 @@
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="4" y1="7" x2="20" y2="7"/>
+                    <line x1="4" y1="12" x2="20" y2="12"/>
+                    <line x1="4" y1="17" x2="20" y2="17"/>
+                </svg>
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
