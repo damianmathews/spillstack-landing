@@ -69,6 +69,7 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 120px;
+            overflow-x: hidden;
         }
 
         body {
@@ -772,8 +773,8 @@
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
                 gap: 1rem;
-                padding-bottom: 0.5rem;
-                margin-inline: -0.5rem;
+                padding: 0 0.5rem 0.75rem;
+                margin: 0;
             }
 
             .step {
@@ -913,7 +914,7 @@
             }
 
             .logo img {
-                height: 36px;
+                height: 52px;
             }
 
             .nav-links {
@@ -998,6 +999,14 @@
                 font-size: 1.75rem;
             }
 
+            .logo img {
+                height: 56px;
+            }
+
+            .footer-logo img {
+                height: 68px;
+            }
+
             .hero-glow {
                 width: 320px;
                 height: 220px;
@@ -1038,7 +1047,8 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://apps.apple.com/us/app/spillstack/id6755917648" class="nav-cta">Download</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle navigation">
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
@@ -1255,11 +1265,13 @@
                 menuToggle.addEventListener('click', () => {
                     const isOpen = mobileMenu.classList.toggle('open');
                     document.body.classList.toggle('menu-open', isOpen);
+                    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 });
                 mobileMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('open');
                         document.body.classList.remove('menu-open');
+                        menuToggle.setAttribute('aria-expanded', 'false');
                     });
                 });
             }
