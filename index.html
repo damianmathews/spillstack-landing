@@ -486,8 +486,10 @@
 
         .app-screenshots {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .app-screenshot {
@@ -900,12 +902,6 @@
         }
 
         /* Mobile Styles */
-        @media (max-width: 900px) {
-            .app-screenshots {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
         @media (max-width: 768px) {
             nav {
                 padding: 1rem 1.5rem;
@@ -953,17 +949,8 @@
             }
 
             .app-screenshots {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                gap: 0.75rem;
-                padding-bottom: 0.5rem;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .app-screenshot {
-                flex: 0 0 65%;
-                min-width: 0;
+                gap: 1rem;
+                max-width: 400px;
             }
 
             .features {
@@ -994,10 +981,6 @@
         }
 
         @media (max-width: 500px) {
-            .app-screenshot {
-                flex: 0 0 70%;
-            }
-
             .hero {
                 padding-top: 7rem;
             }
@@ -1104,13 +1087,7 @@
             <div class="app-preview-container">
                 <div class="app-screenshots">
                     <div class="app-screenshot">
-                        <img src="screenshots/1.png" alt="SpillStack Ideas List" loading="lazy">
-                    </div>
-                    <div class="app-screenshot">
-                        <img src="screenshots/2.png" alt="SpillStack AI Preview" loading="lazy">
-                    </div>
-                    <div class="app-screenshot">
-                        <img src="screenshots/3.png" alt="SpillStack Tasks" loading="lazy">
+                        <img src="screenshots/1.png" alt="SpillStack Home" loading="lazy">
                     </div>
                     <div class="app-screenshot">
                         <img src="screenshots/4.png" alt="SpillStack Library" loading="lazy">
